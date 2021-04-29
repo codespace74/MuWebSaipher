@@ -3,10 +3,10 @@ const Database = use("Database");
 
 class NewsController {
   async index({ view }) {
-    const news = await Database.connection("mysql")
+    /* const news = await Database.connection("mssql")
       .table("blog_posts")
       .select("*");
-    Database.close(["mysql"]);
+    Database.close(["mssql"]); */
     return view.render("news/index", {});
   }
 
