@@ -8,6 +8,10 @@ class AccountPanelController {
   async login({ view }) {
     return view.render("account/login/index", {});
   }
+
+  async auth({ auth }) {
+    await auth.attempt(uid, password);
+  }
 }
 
 module.exports = AccountPanelController;

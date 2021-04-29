@@ -23,21 +23,13 @@
 				<span class="second"></span>
 				<span class="third"></span>
 			</div>
-			<div class="acc-login">
-				<form>
-					<div class="accBlock">
-						<div class="avatar">
-							<a href=""><img src="images/ava-img.png" alt=""> <span>VeryLognNickNameVery</span></a>
-						</div>
-						<div class="acc-out">
-							<a href=""></a>
-						</div>
-					</div>
-					<div class="loginBlock" style="display: none;">
-						<a href="login.html#content" class="small-btn button enter-icon">Login</a>
-					</div>
-				</form>
-			</div>
+
+			@loggedIn
+				@include("account/login-panel/logged")
+			@else
+				@include("account/login-panel/not-logged")
+			@endloggedIn
+
 			<div class="langBlock">
 				<a href="" class="active"><img src="images/eng-icon.png" alt="Eng"></a> <a href=""><img
 						src="images/ru-icon.png" alt="Ru"></a>
