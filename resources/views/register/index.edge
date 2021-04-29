@@ -1,0 +1,52 @@
+@include('header/index')
+<div class="content" id="content">
+    <h1 class="title"><span>Registration</span></h1>
+    <form class="registration">
+        <div class="formGroup">
+            <span>Server:</span>
+            <div class="custom-select">
+                <select>
+                    <option value="0">Select server:</option>
+                    <option value="1">Server 1</option>
+                    <option value="2">Server 2</option>
+                    <option value="3">Server 3</option>
+                </select>
+            </div>
+        </div><!-- formGroup -->
+        <div class="formGroup">
+            <span>Username:</span>
+            <input type="text" name="login" class="login" placeholder="Username">
+        </div><!-- formGroup -->
+        <!-- formGroup -->
+        <div class="formGroup">
+            <span>Name:</span>
+            <input type="text" name="login" class="login" placeholder="Name">
+        </div><!-- formGroup -->
+        <div class="formGroup">
+            <span>E-mail:</span>
+            <input type="text" name="login" class="email" placeholder="E-mail">
+        </div><!-- formGroup -->
+        <div class="formGroup">
+            <span>Password:</span>
+            <input type="password" name="login" class="pass" placeholder="Password">
+        </div><!-- formGroup -->
+        <div class="formGroup">
+            <span>Repeat Password:</span>
+            <input type="password" name="login" class="pass" placeholder="Repeat Password">
+        </div><!-- formGroup -->
+        <div class="formGroup">
+            <span>Personal ID:</span>
+            <input type="password" name="personalID" class="pass" placeholder="PersonalID">
+        </div><!-- formGroup -->
+        <div class="checkboxBlock">
+            <label class="checkBlock">I have read and agree to the <a href="">game rules</a>
+                <input type="checkbox" checked="checked">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+        <div class="formButton">
+            <button>REGISTRATION</button>
+        </div>
+    </form>
+</div><!-- content -->
+@include('footer/index')
