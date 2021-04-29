@@ -38,16 +38,30 @@ module.exports = {
     },
     useNullAsDefault: true,
   },
+
+  mssql: {
+    client: 'mssql',
+    connection: {
+      host: Env.get('DB_HOST', ''),
+      user: Env.get('DB_USER', ''),
+      password: Env.get('DB_PASSWORD', ''),
+      database: Env.get('DB_DATABASE', ''),
+      options: {
+        encrypt: Env.get('DB_ENCRYPT', false)
+      }
+    }
+  },
+/*
   mssql: {
     client: "mssql",
     connection: {
-      host: "127.0.0.1",
-      port: 3306,
-      user: "root",
-      password: "",
-      database: "adonis",
+      host: "192.168.0.114",
+      port: 1433,
+      user: "sa",
+      password: "1234567",
+      database: "MuOnline",
     },
-  },
+  },*/
   /*
   |--------------------------------------------------------------------------
   | MySQL

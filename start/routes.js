@@ -13,7 +13,7 @@ Route.get("/", "HomeController.index");
 Route.get("/downloads", "DownloadController.index");
 
 Route.get("/register", "RegisterController.index");
-
+Route.post("/register", "RegisterController.create").as('createAccount');
 Route.get("/news", "NewsController.index");
 Route.get("/news/read/:id", "NewsController.read");
 

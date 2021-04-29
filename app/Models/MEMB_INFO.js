@@ -6,6 +6,6 @@ const Hash = use("Hash");
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Model = use("Model");
 
-class User extends Model {}
+class MEMB_INFO extends Model {}
 
-module.exports = User;
+module.exports = MEMB_INFO;
