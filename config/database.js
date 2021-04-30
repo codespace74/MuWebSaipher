@@ -51,17 +51,7 @@ module.exports = {
       }
     }
   },
-/*
-  mssql: {
-    client: "mssql",
-    connection: {
-      host: "192.168.0.114",
-      port: 1433,
-      user: "sa",
-      password: "1234567",
-      database: "MuOnline",
-    },
-  },*/
+  
   /*
   |--------------------------------------------------------------------------
   | MySQL

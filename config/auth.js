@@ -32,7 +32,8 @@ module.exports = {
     model: 'App/Models/MEMB_INFO',
     scheme: 'session',
     uid: 'memb___id',
-    password: 'memb__pwd'
+    password: 'memb__pwd',
+    hash: false
   },
 
   /*

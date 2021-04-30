@@ -9,8 +9,14 @@ class AccountPanelController {
     return view.render("account/login/index", {});
   }
 
-  async auth({ auth }) {
-    await auth.attempt(uid, password);
+  async auth({ request, response, session, auth }) {
+    const { username, password } = request.body
+    try {
+      await auth.attempt(username, password)
+      response.redirect('/account-panel', true)
+    } catch (err) {
+      console.log(err)
+    }
   }
 }
 

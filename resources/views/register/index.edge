@@ -1,6 +1,10 @@
 @include('header/index')
 <div class="content" id="content">
     <h1 class="title"><span>Registration</span></h1>
+    {{ elIf('<span>$self</span>', getErrorFor('email'), hasErrorFor('email')) }}
+    {{ elIf('<span>$self</span>', getErrorFor('username'), hasErrorFor('username')) }}
+    {{ elIf('<span>$self</span>', getErrorFor('password'), hasErrorFor('password')) }}
+
     <form class="registration" method="POST" action="{{ route('createAccount') }}">
         {{ csrfField() }}
         <div class="formGroup">
@@ -16,28 +20,31 @@
         </div><!-- formGroup -->
         <div class="formGroup">
             <span>Username:</span>
-            <input type="text" name="memb___id" class="login" placeholder="Username">
+            <input type="text" name="username" class="login" placeholder="Username" maxlength="10">
         </div><!-- formGroup -->
         <!-- formGroup -->
         <div class="formGroup">
             <span>Name:</span>
-            <input type="text" name="memb_name" class="login" placeholder="Name">
+            <input type="text" name="memb_name" class="login" placeholder="Name" maxlength="10">
         </div><!-- formGroup -->
         <div class="formGroup">
             <span>E-mail:</span>
-            <input type="text" name="mail_addr" class="email" placeholder="E-mail">
+            <input type="text" name="email" class="email" placeholder="E-mail">
+
         </div><!-- formGroup -->
+
         <div class="formGroup">
             <span>Password:</span>
-            <input type="password" name="memb__pwd" class="pass" placeholder="Password">
+            <input type="password" name="password" class="pass" placeholder="Password" maxlength="10">
+
         </div><!-- formGroup -->
         <div class="formGroup">
             <span>Repeat Password:</span>
-            <input type="password" name="re_memb__pwd" class="pass" placeholder="Repeat Password">
+            <input type="password" name="re_password" class="pass" placeholder="Repeat Password" maxlength="10">
         </div><!-- formGroup -->
         <div class="formGroup">
             <span>Personal ID:</span>
-            <input type="password" name="sno__numb" class="pass" placeholder="PersonalID">
+            <input type="password" name="sno__numb" class="pass" placeholder="PersonalID" maxlength="10">
         </div><!-- formGroup -->
         <div class="checkboxBlock">
             <label class="checkBlock">I have read and agree to the <a href="">game rules</a>
