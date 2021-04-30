@@ -7,7 +7,7 @@ class HomeController {
 
     const account = await MEMB_INFO.all()
 
-    return view.render("home/index", {});
+    return view.render("home.index", {});
   }
 }
 

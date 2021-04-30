@@ -3,16 +3,16 @@
     <h1 class="title"><span>Account panel</span></h1>
     <div class="accountPanelBlock">
         <div class="account-title">
-            Welcome, <span>USERNAME</span>
+            Welcome, <span>{{auth.user.memb_name}}</span>
         </div>
         <div class="accountInfo">
             <div class="accountInfo-leftBlock">
                 <div class="accountInfo-ava">
                 </div>
                 <div class="accountInfo-my">
-                    <p>My Credits: <span>10</span></p>
-                    <p>My Golden credits: <span>120</span></p>
-                    <p>My Coins: <span>1043</span></p>
+                    <p>WCoinC: <span>{{coins.WCoinC | 0}}</span></p>
+                    <p>WCoinP: <span>{{coins.WCoinP | 0}}</span></p>
+                    <p>GoblinPoint: <span>{{coins.GoblinPoint | 0}}</span></p>
                 </div>
             </div>
             <div class="accountInfo-rightBlock">
@@ -24,11 +24,11 @@
                         <tbody>
                             <tr>
                                 <td>Account</td>
-                                <td>Username</td>
+                                <td>{{auth.user.memb___id}}</td>
                             </tr>
                             <tr>
                                 <td>Email</td>
-                                <td>username@gmail.com</td>
+                                <td>{{auth.user.mail_addr}}</td>
                             </tr>
                             <tr>
                                 <td>Rank</td>
@@ -48,7 +48,7 @@
                         <tbody>
                             <tr>
                                 <td>Member since</td>
-                                <td>01/03/2019</td>
+                                <td>{{auth.user.created_at}}</td>
                             </tr>
                             <tr>
                                 <td>Last login</td>

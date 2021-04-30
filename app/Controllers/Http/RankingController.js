@@ -2,10 +2,10 @@
 
 class RankingController {
   async rankingTopGuild({ view }) {
-    return view.render("ranking/top-guilds/index", {});
+    return view.render("ranking.top-guilds.index", {});
   }
   async rankingTopPlayers({ view }) {
-    return view.render("ranking/top-players/index", {});
+    return view.render("ranking.top-players.index", {});
   }
 }
 

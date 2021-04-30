@@ -8,10 +8,10 @@ const Model = use("Model");
 
 class MEMB_INFO extends Model {
 
-    static boot () {
+    static boot() {
         super.boot()
         this.addHook('afterFind', 'MembInfoHook.hashPassword')
-      }
+    }
 
     static get table() {
         return 'MEMB_INFO';
@@ -23,6 +23,10 @@ class MEMB_INFO extends Model {
 
     static get primaryKey() {
         return 'memb_guid';
+    }
+
+    static get hidden() {
+        return ['password']
     }
 
 

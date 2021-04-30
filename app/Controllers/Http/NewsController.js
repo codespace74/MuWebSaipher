@@ -7,11 +7,11 @@ class NewsController {
       .table("blog_posts")
       .select("*");
     Database.close(["mssql"]); */
-    return view.render("news/index", {});
+    return view.render("news.index", {});
   }
 
   async read({ view }) {
-    return view.render("news/read/index", {});
+    return view.render("news.read.index", {});
   }
 }
 

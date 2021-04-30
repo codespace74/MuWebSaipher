@@ -1,11 +1,12 @@
 "use strict";
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const MEMB_INFO = use("App/Models/MEMB_INFO");
+
 const { validate } = use('Validator')
 
 class RegisterController {
   async index({ view }) {
-    return view.render("register/index", {});
+    return view.render("register.index", {});
   }
 
   async create({ request, response, session }) {

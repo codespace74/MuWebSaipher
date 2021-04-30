@@ -19,6 +19,7 @@ Route.get("/news/read/:id", "NewsController.read");
 
 Route.get("/login", "AccountPanelController.login");
 Route.post("/auth", "AccountPanelController.auth").as('authAccount');
+Route.get("/logout", "AccountPanelController.logout").as('authAccount');
 
 Route.get("/account-panel", "AccountPanelController.index").middleware(['auth']);
 
