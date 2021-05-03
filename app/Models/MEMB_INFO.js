@@ -11,6 +11,7 @@ class MEMB_INFO extends Model {
     static boot() {
         super.boot()
         this.addHook('afterFind', 'MembInfoHook.hashPassword')
+        this.addHook('afterFind', 'MembInfoHook.dateFormat')
     }
 
     static get table() {

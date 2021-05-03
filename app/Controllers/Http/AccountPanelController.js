@@ -10,7 +10,7 @@ class AccountPanelController {
   }
 
   async getCoinsAccount(user) {
-    const coins = await CashShopData.findBy("AccountID", user)
+    const coins = await CashShopData.findBy("AccountID", user);
     return coins;
   }
 
@@ -19,18 +19,18 @@ class AccountPanelController {
   }
 
   async auth({ request, response, session, auth }) {
-    const { username, password } = request.body
+    const { username, password } = request.body;
     try {
-      await auth.attempt(username, password)
-      response.redirect('/account-panel', true)
+      await auth.attempt(username, password);
+      response.redirect("/account-panel", true);
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   }
 
   async logout({ auth, response }) {
-    await auth.logout()
-    response.redirect('/', true)
+    await auth.logout();
+    response.redirect("/", true);
   }
 }
 
