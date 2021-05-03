@@ -3,6 +3,9 @@
 	<h1 class="title"><span>Login</span></h1>
 	<form class="loginForm" method="POST" action="{{ route('authAccount') }}">
 		{{ csrfField() }}
+		{{ elIf('<span>$self</span>', getErrorFor('username'), hasErrorFor('username')) }}
+		{{ elIf('<span>$self</span>', getErrorFor('password'), hasErrorFor('password')) }}
+
 		<div class="formGroup">
 			<span>Username:</span>
 			<input type="text" name="username" class="login" placeholder="Username">

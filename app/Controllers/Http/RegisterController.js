@@ -2,7 +2,7 @@
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const MEMB_INFO = use("App/Models/MEMB_INFO");
 
-const { validate } = use('Validator')
+const { validate } = use("Validator");
 
 class RegisterController {
   async index({ view }) {
@@ -17,32 +17,29 @@ class RegisterController {
       re_password,
       memb_name,
       sno__numb,
-
-    } = request.body
+    } = request.body;
 
     const rules = {
-      email: 'required|email|unique:MEMB_INFO,mail_addr',
-      username: 'required|unique:MEMB_INFO, memb___id',
-      password: `required|equals:${re_password}`
-    }
+      email: "required|email|unique:MEMB_INFO,mail_addr",
+      username: "required|unique:MEMB_INFO, memb___id",
+      password: `required|equals:${re_password}`,
+    };
 
     const messages = {
-      'username.required': 'Usuário inválido.',
-      'username.unique': 'Usuário em uso tente outro.',
-      'email.unique': 'E-mail em uso tente outro.',
-      'email.required': 'E-mail inválido.',
-      'password.required': 'Senha inválida.',
-      'password.equals': 'Senhas não combinam.',
-    }
+      "username.required": "Usuário inválido.",
+      "username.unique": "Usuário em uso tente outro.",
+      "email.unique": "E-mail em uso tente outro.",
+      "email.required": "E-mail inválido.",
+      "password.required": "Senha inválida.",
+      "password.equals": "Senhas não combinam.",
+    };
 
-    const validation = await validate(request.all(), rules, messages)
+    const validation = await validate(request.all(), rules, messages);
 
     if (validation.fails()) {
-      session
-        .withErrors(validation.messages())
-        .flashExcept(['password'])
+      session.withErrors(validation.messages()).flashExcept(["password"]);
 
-      return response.redirect('back')
+      return response.redirect("back");
     }
 
     const account = await MEMB_INFO.create({
@@ -52,10 +49,10 @@ class RegisterController {
       sno__numb,
       mail_addr: email,
       bloc_code: 1,
-      ctl1_code: 1
-    })
+      ctl1_code: 1,
+    });
 
-    response.redirect('/', true)
+    response.redirect("/", true);
   }
 }
 
