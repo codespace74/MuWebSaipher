@@ -25,40 +25,38 @@ class AccountPanelController {
 
   async auth({ request, response, session, auth }) {
     const { username, password } = request.body;
-    try {
-      const account = await MEMB_INFO.findBy("memb___id", username);
 
-      const rules = {
-        username: `required|equals:${account.memb___id}`,
-        password: `required`,
-      };
-      const messages = {
-        "username.required": "Usuário inválido.",
-        "username.equals": "Usuário não encontrado.",
-        "password.required": "Senha inválida.",
-      };
+    const rules = {
+      username: `required|min:1|max:10`,
+      password: `required`,
+    };
+    const messages = {
+      "username.required": "Usuário inválido.",
+      "username.min": "Usuário inválido.",
+      "username.max": "Usuário inválido.",
 
-      const validation = await validate(request.all(), rules, messages);
+      "password.required": "Senha inválida.",
+    };
 
-      if (validation.fails()) {
-        session.withErrors(validation.messages()).flashAll();
-        return response.redirect("back");
-      }
+    const validation = await validate(request.all(), rules, messages);
 
-      const passwordCheck = await Hash.verify(password, account.memb__pwd);
+    if (validation.fails()) {
+      session.withErrors(validation.messages()).flashAll();
+      return response.redirect("back");
+    }
+    const account = await MEMB_INFO.findBy("memb___id", username);
+    if (account) {
+      var passwordCheck = await Hash.verify(password, account.memb__pwd);
+    }
 
-      if (!passwordCheck) {
-        session
-          .withErrors([{ field: "password", message: "Falha no login" }])
-          .flashAll();
-        return response.redirect("back");
-      }
-
+    if (!account || !passwordCheck) {
+      session
+        .withErrors([{ field: "password", message: "Falha no login" }])
+        .flashAll();
+      return response.redirect("back");
+    } else {
       await auth.attempt(username, password);
       response.redirect("/account-panel", true);
-    } catch (err) {
-      session.put("loginError", "Error no login");
-      return response.redirect("back");
     }
   }
 

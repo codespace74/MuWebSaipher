@@ -1,6 +1,6 @@
 {
   "name": "mu-web-saipher",
-  "version": "4.1.0",
+  "version": "1.1.0",
   "adonis-version": "4.1.0",
   "description": "CMS MU SAIPHER JS",
   "main": "index.js",
@@ -27,9 +27,11 @@
     "@adonisjs/session": "^1.1.0",
     "@adonisjs/shield": "^1.0.8",
     "@adonisjs/validator": "^5.1.0",
-    "mssql": "^6.3.1"
+    "mssql": "^6.3.1",
+    "tedious": "^11.0.8"
   },
   "autoload": {
-    "App": "./app"
+    "App": "./app",
+    "Core": "./core"
   }
 }

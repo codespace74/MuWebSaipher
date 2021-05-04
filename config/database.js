@@ -39,19 +39,31 @@ module.exports = {
     useNullAsDefault: true,
   },
 
+    /*
+  |--------------------------------------------------------------------------
+  | MSSQL
+  |--------------------------------------------------------------------------
+  |
+  | Here we define connection settings for MSSQL database.
+  |
+  | npm i --save mssql
+  |
+  */
+
   mssql: {
-    client: 'mssql',
+    client: "mssql",
     connection: {
-      host: Env.get('DB_HOST', ''),
-      user: Env.get('DB_USER', ''),
-      password: Env.get('DB_PASSWORD', ''),
-      database: Env.get('DB_DATABASE', ''),
+      host: Env.get("DB_HOST", ""),
+      user: Env.get("DB_USER", ""),
+      password: Env.get("DB_PASSWORD", ""),
+      database: Env.get("DB_DATABASE", ""),
       options: {
-        encrypt: Env.get('DB_ENCRYPT', false)
-      }
-    }
+        encrypt: Env.get("DB_ENCRYPT", false),
+        enableArithAbort: true,
+      },
+    },
   },
-  
+
   /*
   |--------------------------------------------------------------------------
   | MySQL
@@ -70,9 +82,7 @@ module.exports = {
       user: Env.get("DB_USER", "root"),
       password: Env.get("DB_PASSWORD", ""),
       database: Env.get("DB_DATABASE", "adonis"),
-      enableArithAbort: true
     },
-    
   },
 
   /*
