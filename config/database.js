@@ -33,13 +33,13 @@ module.exports = {
     client: "sqlite3",
     connection: {
       filename: Helpers.databasePath(
-        `${Env.get("DB_DATABASE", "development")}.sqlite`
+        `${Env.get("WEB_DATABASE", "development")}.sqlite`
       ),
     },
     useNullAsDefault: true,
   },
 
-    /*
+  /*
   |--------------------------------------------------------------------------
   | MSSQL
   |--------------------------------------------------------------------------
