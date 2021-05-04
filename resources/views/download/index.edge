@@ -2,23 +2,16 @@
 <div class="content" id="content">
     <h1 class="title"><span>Download</span></h1>
     <h2>Full Client newwave with sounds 1.45 GB</h2>
+
+    @each(download in downloads)
     <div class="downloadBlock">
         <div class="downloadBlock_text">
-            Download Mirror 1 [Google Drive]: <a href="">Download - 1.45 GB</a>
+            {{ download.name }} [{{ download.mirror }}] <a href="{{ download.link }}" target="_blank">Download -
+                {{download.size}}</a>
         </div>
-        <a href="" class="button">DOWNLOAD</a>
+        <a href="{{download.link }}" target="_blank" class="button">DOWNLOAD</a>
     </div>
-    <div class="downloadBlock">
-        <div class="downloadBlock_text">
-            Download Mirror 2 [Mega]: <a href="">Download - 1.45 GB</a>
-        </div>
-        <a href="" class="button">DOWNLOAD</a>
-    </div>
-    <div class="downloadBlock">
-        <div class="downloadBlock_text">
-            Download Mirror 3 [Dropbox]: <a href="">Download - 1.45 GB</a>
-        </div>
-        <a href="" class="button">DOWNLOAD</a>
-    </div>
+    @endeach
+
 </div><!-- content -->
 @include('footer/index')

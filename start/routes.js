@@ -56,3 +56,4 @@ Route.get("/ranking/top-players", "RankingController.rankingTopPlayers");
  * Download Router
  */
 Route.get("/downloads", "DownloadController.index");
+Route.get("/downloads/create", "DownloadController.create");

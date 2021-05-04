@@ -5,16 +5,16 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
-	<title>Mu Online</title>
+	<title>{{title}}</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
-	{{ style('css/style.css') }}
+	{{ style("css/style.css") }}
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 	<div id="move-bg">
-		<img id="move-object" src={{ assetsUrl('images/hero.png') }} alt="">
+		<img id="move-object" src={{ assetsUrl("images/hero.png") }} alt="">
 	</div>
 	<div class="wrapper">
 		<div class="menuBlock menuClick">
@@ -25,14 +25,14 @@
 			</div>
 
 			@loggedIn
-				@include("account/login-panel/logged")
+			@include("account/login-panel/logged")
 			@else
-				@include("account/login-panel/not-logged")
+			@include("account/login-panel/not-logged")
 			@endloggedIn
 
 			<div class="langBlock">
-				<a href="" class="active"><img src="images/eng-icon.png" alt="Eng"></a> <a href=""><img
-						src="images/ru-icon.png" alt="Ru"></a>
+				<a href="" class="active"><img src={{ assetsUrl("images/eng-icon.png") }} alt="Eng"></a> <a href=""><img
+						src={{ assetsUrl("images/ru-icon.png") }} alt="Ru"></a>
 			</div>
 			<nav>
 				<ul>
@@ -42,13 +42,13 @@
 					<li><a href="/ranking/top-players#content">Top Players</a></li>
 					<li><a href="/ranking/top-guilds#content">Top Guilds</a></li>
 					<li><a href="">Forum</a></li>
-					<li><a href="page.html#content">About Us</a></li>
+					<li><a href="/about#content">About Us</a></li>
 				</ul>
 			</nav>
 		</div><!-- menuBlock -->
 		<div class="contentBlock menuClick">
 			<div class="logo">
-				<a href="/"><img src="images/logo.png" alt=""></a>
+				<a href="/"><img src={{ assetsUrl("images/logo.png") }} alt=""></a>
 			</div>
 			<header>
 				<div class="buttonHeader">
