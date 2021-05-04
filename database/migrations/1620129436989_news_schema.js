@@ -10,9 +10,10 @@ class NewsSchema extends Schema {
   up() {
     this.create("news", (table) => {
       table.increments();
-      table.string("title", 80).notNullable();
-      table.string("author", 80).notNullable();
-      table.string("body", 1000).notNullable();
+      table.string("title", 80);
+      table.string("author", 80);
+      table.string("body", 2000);
+      table.string("cover", 255);
       table.timestamps();
     });
   }
