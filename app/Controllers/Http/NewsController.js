@@ -5,8 +5,8 @@ const News = use("App/Models/News");
 
 class NewsController {
   async index({ view }) {
-    var news = await News.all();
-    return view.render("news.index", {});
+    const { rows } = await News.all();
+    return view.render("news.index", { news: rows  });
   }
 
   async read({ view }) {
@@ -14,10 +14,14 @@ class NewsController {
   }
 
   async create({ response, request }) {
-    const news = await Database.connection("sqlite")
-      .create("blog_posts")
-      .select("*");
-    Database.close(["sqlite"]);
+    const news = await News.create({
+      title: "WAR BROKE OUT BETWEEN KINGDOMS.",
+      author: "Admin",
+      body: "War broke out between kingdoms. Wild animals turn into raging animals and the dead return to life, craving for blood. Fight with the dark influence of the Metin Stones as one of the allies of the Dragon. Collect all your strengths and take your weapons to protect the... War broke out between kingdoms. Wild animals turn into raging animals and the dead return to life, craving for blood. Fight with the dark influence of the Metin Stones as one of the allies of the Dragon. Collect all your strengths and take your weapons to protect the... War broke out between kingdoms. Wild animals turn into raging animals and the dead return to life, craving for blood. Fight with the dark influence of the Metin Stones as one of the allies of the Dragon. Collect all your strengths and take your weapons to protect the... War broke out between kingdoms. Wild animals turn into raging animals and the dead return to life, craving for blood. Fight with the dark influence of the Metin Stones as one of the allies of the Dragon. Collect all your strengths and take your weapons to protect the...",
+      cover: "default.png",
+    });
+
+    return news;
   }
 }
 

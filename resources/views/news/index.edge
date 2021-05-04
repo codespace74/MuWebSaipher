@@ -1,54 +1,23 @@
 @include('header/index')
 <div class="content" id="content">
     <h1 class="title title-f"><span>Last News</span> <a href="">all news</a></h1>
+    @each(news in news)
     <div class="news">
-        <div class="news-img" style="background-image: url(images/news-img_1.jpg);"></div>
+        <div class="news-img" style="background-image: url(images/{{news.cover}});"></div>
         <div class="news-info">
             <div class="news-info_title">
-                <a href="">WAR BROKE OUT BETWEEN KINGDOMS.</a>
+                <a href="">{{news.title}}</a>
             </div>
             <div class="news-info_text">
-                <p>War broke out between kingdoms. Wild animals turn into raging animals and the dead return to life,
-                    craving for blood. Fight with the dark influence of the Metin Stones as one of the allies of the
-                    Dragon. Collect all your strengths and take your weapons to protect the... </p>
+                <p>{{news.body}}... </p>
             </div>
             <div class="news-info_buttons">
-                <a href="" class="button button-red">READ MORE</a> <span>15.07.2019</span>
+                <a href="/news/read/{{news.id}}" class="button button-red">READ MORE</a>
+                <span>{{news.created_at}}</span>
             </div>
         </div>
     </div>
-    <div class="news">
-        <div class="news-img" style="background-image: url(images/news-img_2.jpg);"></div>
-        <div class="news-info">
-            <div class="news-info_title">
-                <a href="">War broke out between kingdoms. Wild animals turn into raging animals</a>
-            </div>
-            <div class="news-info_text">
-                <p>War broke out between kingdoms. Wild animals turn into raging animals and the dead return to life,
-                    craving for blood. Fight with the dark influence of the Metin Stones as one of the allies of the
-                    Dragon. Collect all your strengths and take your weapons to protect the... </p>
-            </div>
-            <div class="news-info_buttons">
-                <a href="" class="button button-red">READ MORE</a> <span>15.07.2019</span>
-            </div>
-        </div>
-    </div>
-    <div class="news">
-        <div class="news-img" style="background-image: url(images/news-img_3.jpg);"></div>
-        <div class="news-info">
-            <div class="news-info_title">
-                <a href="">WAR BROKE OUT BETWEEN KINGDOMS.</a>
-            </div>
-            <div class="news-info_text">
-                <p>War broke out between kingdoms. Wild animals turn into raging animals and the dead return to life,
-                    craving for blood. Fight with the dark influence of the Metin Stones as one of the allies of the
-                    Dragon. Collect all your strengths and take your weapons to protect the... </p>
-            </div>
-            <div class="news-info_buttons">
-                <a href="" class="button button-red">READ MORE</a> <span>15.07.2019</span>
-            </div>
-        </div>
-    </div>
+    @endeach
     <ul class="pagination">
         <li><a href="" class="number prev"></a></li>
         <li><span class="number active">1</span></li>

@@ -18,6 +18,7 @@ Route.post("/register", "RegisterController.create")
   .middleware(["isAuth"]);
 Route.get("/news", "NewsController.index");
 Route.get("/news/read/:id", "NewsController.read");
+Route.get("/news/create", "NewsController.create");
 
 Route.get("/login", "AccountPanelController.login").middleware(["isAuth"]);
 Route.post("/auth", "AccountPanelController.auth")
