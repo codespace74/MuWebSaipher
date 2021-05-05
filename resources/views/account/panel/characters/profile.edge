@@ -1,0 +1,126 @@
+@include("header/index")
+<div class="content" id="content">
+    <h1 class="title"><span>Top PLayers</span></h1>
+    <div class="blockFlex">
+        <div class="block block-4 block-top-left">
+            <div class="table-top">
+                <div class="table-top-head table-top-content">
+                    <div class="table-position">
+                        Options
+                    </div>
+
+                </div>
+                <div class="table-top-block table-top-content">
+                    <div class="option">
+                        Mover Personagem
+                    </div>
+                </div>
+
+                <div class="table-top-block table-top-content">
+                    <div class="option">
+                        Limpar Inventario
+                    </div>
+                </div>
+
+            </div><!-- table-top -->
+
+        </div>
+        <div class="block block-8">
+            @if(!character)
+            <div class="block-title">
+                no characters found
+            </div>
+            @else
+
+
+            <div class="block-title">
+                Information
+            </div>
+            <div class="informationBlock">
+                <div class="informationBlock-left">
+                    <div class="informationBlock-leftImg">
+                    </div>
+                </div>
+                <div class="informationBlock-right">
+                    <table>
+                        <tr>
+                            <td>Character</td>
+                            <td><a>{{character.Name}}</a></td>
+                        </tr>
+                        <tr>
+                            <td>Class</td>
+                            <td>Rune Wizard 4th</td>
+                        </tr>
+                        <tr>
+                            <td>Level</td>
+                            <td>400</td>
+                        </tr>
+                        <tr>
+                            <td>Master level</td>
+                            <td>600</td>
+                        </tr>
+                        <tr>
+                            <td>PK Level</td>
+                            <td>Commoner (0)</td>
+                        </tr>
+                        <tr>
+                            <td>Location</td>
+                            <td>{{character.MapNumber}}({{character.MapPosX}}x{{character.MapPosY}})</td>
+                        </tr>
+                        <tr>
+                            <td>Status</td>
+                            <td><span class="status offline">offline</span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="block-title">
+                Account Information
+            </div>
+            <table class="table-info">
+                <tr>
+                    <td>Characters:</td>
+                    <td><a href="">runewiz4</a> <a href="">runewiz4</a> <a href="">runewiz4</a> <a href="">runewiz4</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Last Login:</td>
+                    <td>Undefined</td>
+                </tr>
+                <tr>
+                    <td>PK Level:</td>
+                    <td>Undefined</td>
+                </tr>
+            </table>
+            <div class="block-title">
+                Guild Info
+            </div>
+            <table class="table-info">
+                <tr>
+                    <td>Guild:</td>
+                    <td><a href="">runewiz4</a></td>
+                </tr>
+                <tr>
+                    <td>Master:</td>
+                    <td><a href="">runewiz4</a></td>
+                </tr>
+                <tr>
+                    <td>Members:</td>
+                    <td>1</td>
+                </tr>
+            </table>
+            <div class="block-title">
+                Equipment
+            </div>
+            <div class="heroBlock">
+                <h3>NAME HERO</h3>
+                <div class="scroll-x">
+                    <div class="heroBlock-equip">
+                    </div>
+                </div>
+            </div>
+            @endif
+        </div>
+    </div><!-- blockFlex -->
+</div><!-- content -->
+@include("footer/index")

@@ -7,30 +7,31 @@ const Hash = use("Hash");
 const Model = use("Model");
 
 class MEMB_INFO extends Model {
+  static boot() {
+    super.boot();
+    this.addHook("afterFind", "MembInfoHook.hashPassword");
+    this.addHook("afterFind", "MembInfoHook.dateFormat");
+  }
 
-    static boot() {
-        super.boot()
-        this.addHook('afterFind', 'MembInfoHook.hashPassword')
-        this.addHook('afterFind', 'MembInfoHook.dateFormat')
-    }
+  static get table() {
+    return "MEMB_INFO";
+  }
 
-    static get table() {
-        return 'MEMB_INFO';
-    }
+  static get incrementing() {
+    return true;
+  }
 
-    static get incrementing() {
-        return true;
-    }
+  static get primaryKey() {
+    return "memb_guid";
+  }
 
-    static get primaryKey() {
-        return 'memb_guid';
-    }
+  static get hidden() {
+    return ["password"];
+  }
 
-    static get hidden() {
-        return ['password']
-    }
-
-
+  characters() {
+    return this.hasMany("App/Models/Character", "memb___id", "AccountID");
+  }
 }
 
 module.exports = MEMB_INFO;

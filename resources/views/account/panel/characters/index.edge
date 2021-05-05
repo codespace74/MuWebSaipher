@@ -1,0 +1,24 @@
+@include('header/index')
+<div class="content" id="content">
+    <h1 class="title"><span>Account panel</span></h1>
+    <div class="accountPanelBlock">
+        <div class="account-title">
+            Welcome, <span>{{auth.user.memb_name}}</span>
+        </div>
+        <div class="accountInfo">
+            <div class="accountInfo-rightBlock">
+                <div class="accountInfo-title">
+                    character option
+                </div>
+                <div>
+                </div>
+                <div class="account-buttons">
+                    @each(character in characters)
+                    <a href="/account-panel/characters/{{ character.Name }}" class="active">{{ character.Name }}</a>
+                    @endeach
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- content -->
+@include('footer/index')

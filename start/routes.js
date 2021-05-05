@@ -16,14 +16,13 @@ Route.get("/", "HomeController.index");
 /**
  * Register Router
  */
-Route.get("/register", "RegisterController.index")
-  .middleware(["isAuth"]);
+Route.get("/register", "RegisterController.index").middleware(["isAuth"]);
 Route.post("/register", "RegisterController.create")
   .as("createAccount")
   .middleware(["isAuth"]);
-  /**
-   * News Router
-   */
+/**
+ * News Router
+ */
 
 Route.get("/news", "NewsController.index");
 Route.get("/news/read/:id", "NewsController.read");
@@ -32,19 +31,27 @@ Route.get("/news/create", "NewsController.create");
 /**
  * Authentication Router
  */
-Route.get("/login", "AccountPanelController.login")
-  .middleware(["isAuth"]);
+Route.get("/login", "AccountPanelController.login").middleware(["isAuth"]);
 Route.post("/auth", "AccountPanelController.auth")
   .as("authAccount")
   .middleware(["isAuth"]);
-Route.get("/logout", "AccountPanelController.logout")
-  .as("authAccount");
+Route.get("/logout", "AccountPanelController.logout").as("authAccount");
 
 /**
  * Account Router
  */
-Route.get("/account-panel", "AccountPanelController.index")
-  .middleware(["auth",]);
+Route.get("/account-panel", "AccountPanelController.index").middleware([
+  "auth",
+]);
+Route.get(
+  "/account-panel/characters",
+  "AccountPanelController.characters"
+).middleware(["auth"]);
+
+Route.get(
+  "/account-panel/characters/:name",
+  "AccountPanelController.charactersProfile"
+).middleware(["auth"]);
 
 /**
  * Ranking Router
