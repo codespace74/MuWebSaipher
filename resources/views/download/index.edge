@@ -3,15 +3,19 @@
     <h1 class="title"><span>Download</span></h1>
     <h2>Full Client newwave with sounds 1.45 GB</h2>
 
-    @each(download in downloads)
-    <div class="downloadBlock">
-        <div class="downloadBlock_text">
-            {{ download.name }} [{{ download.mirror }}] <a href="{{ download.link }}" target="_blank">Download -
-                {{download.size}}</a>
-        </div>
-        <a href="{{download.link }}" target="_blank" class="button">DOWNLOAD</a>
-    </div>
-    @endeach
+    @if(!downloads)
+        downloads not found
+    @else
+        @each(download in downloads)
+            <div class="downloadBlock">
+                <div class="downloadBlock_text">
+                    {{ download.name }} [{{ download.mirror }}] <a href="{{ download.link }}" target="_blank">Download -
+                        {{download.size}}</a>
+                </div>
+                <a href="{{download.link }}" target="_blank" class="button">DOWNLOAD</a>
+            </div>
+        @endeach      
+    @endif
 
 </div><!-- content -->
 @include('footer/index')

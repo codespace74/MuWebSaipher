@@ -18,13 +18,15 @@ class AccountPanelController {
   }
 
   async characters({ view, auth }) {
-    const characters = await this.getCharactersAccount(auth.user.memb___id);
+    var characters = await this.getCharactersAccount(auth.user.memb___id);
+    if (characters.length <= 0) {
+      characters = null
+    }
     return view.render("account.panel.characters.index", { characters });
   }
 
   async charactersProfile({ view, auth, request }) {
     const { name } = request.params;
-
     var character = await this.getCharacterAccount(name);
     if (character.AccountID != auth.user.memb___id) {
       character = null;
@@ -67,7 +69,7 @@ class AccountPanelController {
     return data[0].characters;
   }
 
-  async getCharacterAccount(character, user) {
+  async getCharacterAccount(character) {
     const data = await Character.findBy("Name", character);
     return data;
   }

@@ -4,7 +4,10 @@ const Download = use("App/Models/Download");
 
 class DownloadController {
   async index({ view }) {
-    const { rows } = await Download.all();
+    var { rows } = await Download.all();
+    if (rows.length <= 0) {
+      rows = null
+    }
     return view.render("download.index", { downloads: rows });
   }
 
