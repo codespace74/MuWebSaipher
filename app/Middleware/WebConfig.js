@@ -4,6 +4,7 @@
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 const View = use("View");
 const { web } = require("../../config/web");
+const { class_codes } = require("../../app/config/class_config.json");
 class WebConfig {
   /**
    * @param {object} ctx
@@ -14,6 +15,9 @@ class WebConfig {
     try {
       View.global("title", web.title);
       View.global("servers", web.title);
+      View.global("getClassLong", function (data) {
+        return class_codes[data].long;
+      });
     } catch (error) {
       return error;
     }
