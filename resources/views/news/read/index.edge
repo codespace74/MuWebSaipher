@@ -1,21 +1,16 @@
 @include('header/index')
+@if(!news)
 <div class="content content-page" id="content">
-    <h1>WAR BROKE OUT BETWEEN KINGDOMS.</h1>
-    <p><img src={{ assetsUrl('images/page-img.jpg') }} alt=""></p>
-    <p>War broke out between kingdoms. Wild animals turn into raging animals and the dead return to life, craving for
-        blood. Fight with the dark influence of the Metin Stones as one of the allies of the Dragon. Collect all your
-        strengths and take your weapons to protect the... War broke out between kingdoms. Wild animals turn into raging
-        animals and the dead return to life, craving for blood. Fight with the dark influence of the Metin Stones as one
-        of the allies of the Dragon. Collect all your strengths and take your weapons to protect the...
-        War broke out between kingdoms. Wild animals turn into raging animals and the dead return to life, craving for
-        blood. Fight with the dark influence of the Metin Stones as one of the allies of the Dragon. Collect all your
-        strengths and take <a href="">your weapons</a> to protect the...</p>
-
-    <p>War broke out between kingdoms. Wild animals turn into raging animals and the dead return to life, craving for
-        blood. Fight with the dark influence of the Metin Stones as one of the allies of the Dragon. Collect all your
-        strengths and take your weapons to protect the... </p>
+    Opss
+</div>
+@else
+<div class="content content-page" id="content">
+    <h1>{{news.title}}</h1>
+    <p><img src={{ assetsUrl('images/') + news.cover }} alt=""></p>
+    <p>{{news.body}}</p>
     <div class="date">
-        15.07.2019
+        {{news.created_at}}
     </div>
 </div><!-- content -->
+@endif
 @include('footer/index')

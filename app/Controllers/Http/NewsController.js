@@ -9,8 +9,14 @@ class NewsController {
     return view.render("news.index", { news: rows });
   }
 
-  async read({ view }) {
-    return view.render("news.read.index", {});
+  async read({ view, request }) {
+    const news = await this.getNewsID(request.params.id);
+    return view.render("news.read.index", { news });
+  }
+
+  async getNewsID(id) {
+    const news = await News.findBy("id", id);
+    return news;
   }
 
   async create({ response, request }) {
