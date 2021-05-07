@@ -1,11 +1,11 @@
 "use strict";
 
 class RankingController {
-  async rankingTopGuild({ view }) {
-    return view.render("ranking.top-guilds.index", {});
+  async rankingTopGuild({ view, request }) {
+    return view.render(request.TEMPLATE_NAME + ".ranking.top-guilds.index", {});
   }
-  async rankingTopPlayers({ view }) {
-    return view.render("ranking.top-players.index", {});
+  async rankingTopPlayers({ view, request }) {
+    return view.render(request.TEMPLATE_NAME + ".ranking.top-players.index", {});
   }
 }
 

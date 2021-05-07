@@ -4,14 +4,14 @@ const Database = use("Database");
 const News = use("App/Models/News");
 
 class NewsController {
-  async index({ view }) {
+  async index({ view, request }) {
     const { rows } = await News.all();
-    return view.render("news.index", { news: rows });
+    return view.render(request.TEMPLATE_NAME + ".news.index", { news: rows });
   }
 
   async read({ view, request }) {
     const news = await this.getNewsID(request.params.id);
-    return view.render("news.read.index", { news });
+    return view.render(request.TEMPLATE_NAME + ".news.read.index", { news });
   }
 
   async getNewsID(id) {

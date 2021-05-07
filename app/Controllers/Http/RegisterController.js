@@ -5,11 +5,11 @@ const MEMB_INFO = use("App/Models/MEMB_INFO");
 const { validate } = use("Validator");
 
 class RegisterController {
-  async index({ view }) {
-    return view.render("register.index", {});
+  async index({ view, request }) {
+    return view.render(request.TEMPLATE_NAME + ".register.index", {});
   }
 
-  async create({ request, response, session }) {
+  async create({ request, response, session, auth }) {
     const {
       email,
       username,
@@ -52,7 +52,10 @@ class RegisterController {
       ctl1_code: 1,
     });
 
-    response.redirect("/", true);
+    if (account) {
+      await auth.attempt(account.memb___id, account.memb__pwd);
+      response.redirect("/account-panel", true);
+    }
   }
 }
 

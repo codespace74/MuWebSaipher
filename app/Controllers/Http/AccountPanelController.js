@@ -12,17 +12,22 @@ const MEMB_INFO = use("App/Models/MEMB_INFO");
 const Character = use("App/Models/Character");
 
 class AccountPanelController {
-  async index({ view, auth }) {
+  async index({ view, auth, request }) {
     const coins = await this.getCoinsAccount(auth.user.memb___id);
-    return view.render("account.panel.index", { coins });
+    return view.render(request.TEMPLATE_NAME + ".account.panel.index", {
+      coins,
+    });
   }
 
-  async characters({ view, auth }) {
+  async characters({ view, auth, request }) {
     var characters = await this.getCharactersAccount(auth.user.memb___id);
     if (characters.length <= 0) {
-      characters = null
+      characters = null;
     }
-    return view.render("account.panel.characters.index", { characters });
+    return view.render(
+      request.TEMPLATE_NAME + ".account.panel.characters.index",
+      { characters }
+    );
   }
 
   async charactersProfile({ view, auth, request }) {
@@ -33,10 +38,13 @@ class AccountPanelController {
       var errorAuth = true;
     }
     errorAuth = false;
-    return view.render("account.panel.characters.profile", {
-      character,
-      errorAuth,
-    });
+    return view.render(
+      request.TEMPLATE_NAME + ".account.panel.characters.profile",
+      {
+        character,
+        errorAuth,
+      }
+    );
   }
 
   async getCoinsAccount(user) {
@@ -74,8 +82,8 @@ class AccountPanelController {
     return data;
   }
 
-  async login({ view }) {
-    return view.render("account.login.index", {});
+  async login({ view, request }) {
+    return view.render(request.TEMPLATE_NAME + ".account.login.index", {});
   }
 
   async auth({ request, response, session, auth }) {

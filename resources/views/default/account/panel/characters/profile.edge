@@ -1,4 +1,4 @@
-@include("header/index")
+@include("default/header/index")
 <div class="content" id="content">
     <h1 class="title"><span>Top PLayers</span></h1>
     <div class="blockFlex">
@@ -36,7 +36,8 @@
             </div>
             <div class="informationBlock">
                 <div class="informationBlock-left">
-                    <div class="informationBlock-leftImg">
+                    <div class="informationBlock-leftImg"
+                        style="background-image: url('{{ assetsUrl('class/') + getClassShort(character.Class) + '.jpg'}}'); max-height: 220px; min-width: 250px;">
                     </div>
                 </div>
                 <div class="informationBlock-right">
@@ -121,4 +122,4 @@
         </div>
     </div><!-- blockFlex -->
 </div><!-- content -->
-@include("footer/index")
+@include("default/footer/index")

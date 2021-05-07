@@ -1,4 +1,4 @@
-@include('header/index')
+@include('default/header/index')
 <div class="content" id="content">
     <h1 class="title"><span>Registration</span></h1>
     {{ elIf('<span>$self</span>', getErrorFor('email'), hasErrorFor('email')) }}
@@ -20,7 +20,8 @@
         </div><!-- formGroup -->
         <div class="formGroup">
             <span>Username:</span>
-            <input type="text" name="username" class="login" value="{{ old('username', '') }}" placeholder="Username" maxlength="10">
+            <input type="text" name="username" class="login" value="{{ old('username', '') }}" placeholder="Username"
+                maxlength="10">
         </div><!-- formGroup -->
         <!-- formGroup -->
         <div class="formGroup">
@@ -57,4 +58,4 @@
         </div>
     </form>
 </div><!-- content -->
-@include('footer/index')
+@include('default/footer/index')

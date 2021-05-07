@@ -3,12 +3,12 @@
 const Download = use("App/Models/Download");
 
 class DownloadController {
-  async index({ view }) {
+  async index({ view, request }) {
     var { rows } = await Download.all();
     if (rows.length <= 0) {
       rows = null
     }
-    return view.render("download.index", { downloads: rows });
+    return view.render(request.TEMPLATE_NAME + ".download.index", { downloads: rows });
   }
 
   async create({ view }) {
