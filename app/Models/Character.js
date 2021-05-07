@@ -11,6 +11,10 @@ class Character extends Model {
   characters() {
     return this.belongsTo("App/Models/MEMB_INFO", "memb___id", "AccountID");
   }
+
+  masterLevel() {
+    return this.hasOne("App/Models/MasterSkillTree", "Name", "Name");
+  }
 }
 
 module.exports = Character;

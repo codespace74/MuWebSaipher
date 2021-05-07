@@ -6,7 +6,7 @@
 @else
 <div class="content content-page" id="content">
     <h1>{{news.title}}</h1>
-    <p><img src={{ assetsUrl('images/') + news.cover }} alt=""></p>
+    <p><img src={{ assetsUrl(TEMPLATE_NAME + '/images/') + news.cover }} alt="{{news.title}}"></p>
     <p>{{news.body}}</p>
     <div class="date">
         {{news.created_at}}

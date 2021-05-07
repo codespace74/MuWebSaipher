@@ -3,17 +3,16 @@ const { validate } = use("Validator");
 const Hash = use("Hash");
 
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
-const CashShopData = use("App/Models/CashShopData");
-
-/** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const MEMB_INFO = use("App/Models/MEMB_INFO");
 
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Character = use("App/Models/Character");
 
+const { getCoinsAccount } = require("../../Functions/main");
+
 class AccountPanelController {
   async index({ view, auth, request }) {
-    const coins = await this.getCoinsAccount(auth.user.memb___id);
+    const coins = await getCoinsAccount(auth.user.memb___id);
     return view.render(request.TEMPLATE_NAME + ".account.panel.index", {
       coins,
     });
@@ -33,7 +32,7 @@ class AccountPanelController {
   async charactersProfile({ view, auth, request }) {
     const { name } = request.params;
     var character = await this.getCharacterAccount(name);
-    if (character.AccountID != auth.user.memb___id) {
+    if (character[0].AccountID != auth.user.memb___id) {
       character = null;
       var errorAuth = true;
     }
@@ -41,15 +40,10 @@ class AccountPanelController {
     return view.render(
       request.TEMPLATE_NAME + ".account.panel.characters.profile",
       {
-        character,
+        character: character[0],
         errorAuth,
       }
     );
-  }
-
-  async getCoinsAccount(user) {
-    const data = await CashShopData.findBy("AccountID", user);
-    return data;
   }
 
   async getAccountInfo(user) {
@@ -74,12 +68,28 @@ class AccountPanelController {
 
   async getCharactersAccount(user) {
     const data = await this.getAccountInfo(user);
+
     return data[0].characters;
   }
 
   async getCharacterAccount(character) {
-    const data = await Character.findBy("Name", character);
-    return data;
+    const data = await Character.query()
+      .select(
+        "id",
+        "AccountID",
+        "Name",
+        "cLevel",
+        "Class",
+        "MapNumber",
+        "MapPosX",
+        "MapPosY"
+      )
+      .with("masterLevel", (builder) =>
+        builder.select("Name", "MasterLevel", "MasterPoint")
+      )
+      .where("Name", character)
+      .fetch();
+    return data.toJSON();
   }
 
   async login({ view, request }) {

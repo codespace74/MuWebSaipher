@@ -8,13 +8,13 @@
 	<title>{{title}}</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
-	{{ style("css/style.css") }}
+	{{ style(TEMPLATE_NAME + "/css/style.css") }}
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 	<div id="move-bg">
-		<img id="move-object" src={{ assetsUrl("images/hero.png") }} alt="">
+		<img id="move-object" src={{ assetsUrl(TEMPLATE_NAME + "/images/hero.png") }} alt="">
 	</div>
 	<div class="wrapper">
 		<div class="menuBlock menuClick">
@@ -31,8 +31,8 @@
 			@endloggedIn
 
 			<div class="langBlock">
-				<a href="" class="active"><img src={{ assetsUrl("images/eng-icon.png") }} alt="Eng"></a> <a href=""><img
-						src={{ assetsUrl("images/ru-icon.png") }} alt="Ru"></a>
+				<a href="" class="active"><img src={{ assetsUrl(TEMPLATE_NAME + "/images/eng-icon.png") }} alt="Eng">
+				</a> <a href=""><img src={{ assetsUrl(TEMPLATE_NAME + "/images/ru-icon.png") }} alt="Ru"></a>
 			</div>
 			<nav>
 				<ul>
@@ -48,7 +48,7 @@
 		</div><!-- menuBlock -->
 		<div class="contentBlock menuClick">
 			<div class="logo">
-				<a href="/"><img src={{ assetsUrl("images/logo.png") }} alt=""></a>
+				<a href="/"><img src={{ assetsUrl(TEMPLATE_NAME + "/images/logo.png") }} alt=""></a>
 			</div>
 			<header>
 				<div class="buttonHeader">

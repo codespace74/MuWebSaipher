@@ -4,8 +4,11 @@
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 const View = use("View");
 const { web } = require("../../config/web");
+
 const { class_codes } = require("../../app/Config/class_config.json");
+const { map_codes } = require("../../app/Config/map_config.json");
 const { theme } = require("../../app/Config/web_config.json");
+
 class WebConfig {
   /**
    * @param {object} ctx
@@ -24,6 +27,9 @@ class WebConfig {
       });
       View.global("getClassShort", function (data) {
         return class_codes[data].short;
+      });
+      View.global("getMapName", function (data) {
+        return map_codes[data];
       });
     } catch (error) {
       return error;

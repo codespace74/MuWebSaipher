@@ -515,6 +515,7 @@ header a {
 .accBlock {
   display: flex;
   align-items: center;
+  width: 94%;
 }
 
 .buttonHeader {

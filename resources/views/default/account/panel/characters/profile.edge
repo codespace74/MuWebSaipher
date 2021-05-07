@@ -37,7 +37,7 @@
             <div class="informationBlock">
                 <div class="informationBlock-left">
                     <div class="informationBlock-leftImg"
-                        style="background-image: url('{{ assetsUrl('class/') + getClassShort(character.Class) + '.jpg'}}'); max-height: 220px; min-width: 250px;">
+                        style="background-image: url('{{ assetsUrl('global/class/') + getClassShort(character.Class) + '.jpg'}}'); background-position: center; max-height: 220px; min-width: 200px;">
                     </div>
                 </div>
                 <div class="informationBlock-right">
@@ -56,7 +56,7 @@
                         </tr>
                         <tr>
                             <td>Master level</td>
-                            <td>600</td>
+                            <td>{{character.masterLevel.MasterLevel}}</td>
                         </tr>
                         <tr>
                             <td>PK Level</td>
@@ -64,7 +64,7 @@
                         </tr>
                         <tr>
                             <td>Location</td>
-                            <td>{{character.MapNumber}}({{character.MapPosX}}x{{character.MapPosY}})</td>
+                            <td>{{getMapName(character.MapNumber)}} ({{character.MapPosX}}x{{character.MapPosY}})</td>
                         </tr>
                         <tr>
                             <td>Status</td>

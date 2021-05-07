@@ -3,7 +3,7 @@
     <h1 class="title title-f"><span>Last News</span></h1>
     @each(news in news)
     <div class="news">
-        <div class="news-img" style="background-image: url(images/{{news.cover}});"></div>
+        <div class="news-img" style="background-image: url({{TEMPLATE_NAME}}/images/{{news.cover}});"></div>
         <div class="news-info">
             <div class="news-info_title">
                 <a href="">{{news.title}}</a>
