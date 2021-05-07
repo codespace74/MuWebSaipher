@@ -32,7 +32,7 @@ class AccountPanelController {
   async charactersProfile({ view, auth, request }) {
     const { name } = request.params;
     var character = await this.getCharacterAccount(name);
-    if (character[0].AccountID != auth.user.memb___id) {
+    if (character && character.AccountID != auth.user.memb___id) {
       character = null;
       var errorAuth = true;
     }
@@ -40,7 +40,7 @@ class AccountPanelController {
     return view.render(
       request.TEMPLATE_NAME + ".account.panel.characters.profile",
       {
-        character: character[0],
+        character: character,
         errorAuth,
       }
     );
@@ -89,7 +89,10 @@ class AccountPanelController {
       )
       .where("Name", character)
       .fetch();
-    return data.toJSON();
+
+    const characterJson = data.toJSON();
+    
+    return characterJson[0];
   }
 
   async login({ view, request }) {
