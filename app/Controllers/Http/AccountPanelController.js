@@ -91,7 +91,7 @@ class AccountPanelController {
       .fetch();
 
     const characterJson = data.toJSON();
-    
+
     return characterJson[0];
   }
 
