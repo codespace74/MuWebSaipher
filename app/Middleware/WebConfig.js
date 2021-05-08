@@ -5,6 +5,7 @@
 const View = use("View");
 
 const { web, theme } = require("../../app/Config/web_config.json");
+const { eng } = require("../Lang/eng/main.json")
 const {
   getPkLevel,
   getCharacterStatusCode,
@@ -40,6 +41,16 @@ class WebConfig {
       View.global("getCharacterStatusCode", (code) =>
         getCharacterStatusCode(code)
       );
+      View.global('lang', function (key) {
+        if (web.lang === "eng") {
+          return eng[key]
+        }
+        if (web.lang === "pt_br") {
+          return pt_br[key]
+        }
+        return eng[key]
+      })
+
     } catch (error) {
       console.log(console.error);
     }

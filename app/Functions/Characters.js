@@ -2,6 +2,7 @@
 const Character = use("App/Models/Character");
 
 const { getAccountInfo } = require("./Account");
+const { getGuildCharacter, getGuildName } = require("./Guild")
 
 class Characters {
   async getCharactersAccount(user) {
@@ -30,6 +31,15 @@ class Characters {
       .fetch();
 
     const characterJson = data.toJSON();
+
+    if (characterJson) {
+      characterJson[0].guild = await getGuildCharacter(character)
+      if (characterJson[0].guild) {
+        const Guild_ = await getGuildName(characterJson[0].guild.G_Name)
+        characterJson[0].guild.G_Master = Guild_.G_Master
+        characterJson[0].guild.MemberCount = Guild_.MemberCount
+      }
+    }
 
     return characterJson[0];
   }

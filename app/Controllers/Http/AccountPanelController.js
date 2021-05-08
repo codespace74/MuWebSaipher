@@ -30,7 +30,6 @@ class AccountPanelController {
       "username.required": "Usuário inválido.",
       "username.min": "Usuário inválido.",
       "username.max": "Usuário inválido.",
-
       "password.required": "Senha inválida.",
     };
 
