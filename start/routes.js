@@ -43,14 +43,13 @@ Route.get("/logout", "AccountPanelController.logout").as("authAccount");
 Route.get("/account-panel", "AccountPanelController.index").middleware([
   "auth",
 ]);
-Route.get(
-  "/account-panel/characters",
-  "AccountPanelController.characters"
-).middleware(["auth"]);
+Route.get("/account-panel/characters", "CharacterController.index").middleware([
+  "auth",
+]);
 
 Route.get(
   "/account-panel/characters/:name",
-  "AccountPanelController.charactersProfile"
+  "CharacterController.profile"
 ).middleware(["auth"]);
 
 /**

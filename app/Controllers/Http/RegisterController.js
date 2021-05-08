@@ -3,6 +3,7 @@
 const MEMB_INFO = use("App/Models/MEMB_INFO");
 
 const { validate } = use("Validator");
+const { login } = require("../../Functions/Auth");
 
 class RegisterController {
   async index({ view, request }) {
@@ -53,7 +54,7 @@ class RegisterController {
     });
 
     if (account) {
-      await auth.attempt(account.memb___id, account.memb__pwd);
+      await login(auth, account.memb___id, account.memb__pwd); //auth.attempt(account.memb___id, account.memb__pwd);
       response.redirect("/account-panel", true);
     }
   }
