@@ -1,4 +1,7 @@
 {
+    "web": {
+        "title": "Web Saipher 1.0.0"
+    },
     "theme": {
         "name": "default"
     }

@@ -3,15 +3,15 @@
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 const View = use("View");
-const { web } = require("../../config/web");
 
-const { class_codes } = require("../../app/Config/class_config.json");
-const { map_codes } = require("../../app/Config/map_config.json");
-const { theme } = require("../../app/Config/web_config.json");
+const { web, theme } = require("../../app/Config/web_config.json");
 const {
-  code_types,
-  pk_levels_code,
-} = require("../../app/Config/pk_level_and _character_config.json");
+  getPkLevel,
+  getCharacterStatusCode,
+  getMapName,
+  getClassShort,
+  getClassLong,
+} = require("../Functions/Main");
 
 class WebConfig {
   /**
@@ -29,28 +29,19 @@ class WebConfig {
 
       View.global("TEMPLATE_NAME", theme.name);
 
-      View.global("getClassLong", function (data) {
-        return class_codes[data].long;
-      });
+      View.global("getClassLong", (classCode) => getClassLong(classCode));
 
-      View.global("getClassShort", function (data) {
-        return class_codes[data].short;
-      });
+      View.global("getClassShort", (classCode) => getClassShort(classCode));
 
-      View.global("getMapName", function (data) {
-        return map_codes[data];
-      });
+      View.global("getMapName", (map) => getMapName(map));
 
-      View.global("getPkLevel", function (data) {
-        return pk_levels_code[data];
-      });
+      View.global("getPkLevel", (pk) => getPkLevel(pk));
 
-      View.global("getCharacterStatusCode", function (data) {
-        return code_types[data];
-      });
-
+      View.global("getCharacterStatusCode", (code) =>
+        getCharacterStatusCode(code)
+      );
     } catch (error) {
-      return error;
+      console.log(console.error);
     }
     await next();
   }
