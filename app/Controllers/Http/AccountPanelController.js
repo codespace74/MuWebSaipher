@@ -80,6 +80,8 @@ class AccountPanelController {
         "Name",
         "cLevel",
         "Class",
+        "CtlCode",
+        "PkLevel",
         "MapNumber",
         "MapPosX",
         "MapPosY"

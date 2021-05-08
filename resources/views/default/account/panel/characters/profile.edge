@@ -59,8 +59,12 @@
                             <td>{{character.masterLevel.MasterLevel}}</td>
                         </tr>
                         <tr>
+                            <td>Char Status</td>
+                            <td>{{getCharacterStatusCode(character.CtlCode)}}</td>
+                        </tr>
+                        <tr>
                             <td>PK Level</td>
-                            <td>Commoner (0)</td>
+                            <td>{{getPkLevel(character.PkLevel)}}</td>
                         </tr>
                         <tr>
                             <td>Location</td>
