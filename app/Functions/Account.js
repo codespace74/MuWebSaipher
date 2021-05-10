@@ -4,6 +4,9 @@ const CashShopData = use("App/Models/CashShopData");
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const MEMB_INFO = use("App/Models/MEMB_INFO");
 
+/** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
+const MEMB_STAT = use("App/Models/MEMB_STAT");
+
 class Account {
   async getCoinsAccount(user) {
     const data = await CashShopData.findBy("AccountID", user);
@@ -30,6 +33,8 @@ class Account {
     const AccountJson = data.toJSON();
     return AccountJson[0];
   }
+
+  async getAccountConnectionStatus(account) {}
 }
 
 module.exports = new Account();

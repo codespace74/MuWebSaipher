@@ -56,7 +56,7 @@
                         </tr>
                         <tr>
                             <td>Master level</td>
-                            <td>{{character.masterLevel.MasterLevel | 0 }}</td>
+                            <td>{{character.masterLevel.MasterLevel || 0 }}</td>
                         </tr>
                         <tr>
                             <td>Char Status</td>
@@ -84,7 +84,7 @@
             <table class="table-info">
                 <tr>
                     <td>Guild:</td>
-                    <td><a href="/guild/">{{character.guild.G_Name || lang("without_guild")}}</a></td>
+                    <td><a href="/guild/{{character.guild.G_Name}}">{{character.guild.G_Name || lang("without_guild")}}</a></td>
                 </tr>
                 <tr>
                     <td>Master:</td>

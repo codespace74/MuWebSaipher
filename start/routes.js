@@ -48,7 +48,7 @@ Route.get("/account-panel/characters", "CharacterController.index").middleware([
 ]);
 
 Route.get(
-  "/account-panel/characters/:name",
+  "/account-panel/character/:name",
   "CharacterController.profile"
 ).middleware(["auth"]);
 

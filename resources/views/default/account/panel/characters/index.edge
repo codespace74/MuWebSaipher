@@ -14,11 +14,11 @@
                 </div>
                 <div class="account-buttons">
                     @if(!characters)
-                        no characters found
+                    no characters found
                     @else
-                        @each(character in characters)
-                        <a href="/account-panel/characters/{{ character.Name }}" class="active">{{ character.Name }}</a>
-                        @endeach
+                    @each(character in characters)
+                    <a href="/account-panel/character/{{ character.Name }}" class="active">{{ character.Name }}</a>
+                    @endeach
                     @endif
                 </div>
             </div>
