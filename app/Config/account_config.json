@@ -1,0 +1,6 @@
+{
+    "status_code": {
+        "0": "offline",
+        "1": "online"
+    }
+}

@@ -27,7 +27,6 @@ class Guild {
       .select("*")
       .where("G_Name", guild)
       .getCount();
-      console.log(members)
     return members;
   }
 }

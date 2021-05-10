@@ -4,6 +4,7 @@
 const Model = use("Model");
 
 class MEMB_STAT extends Model {
+
   static get table() {
     return "MEMB_STAT";
   }

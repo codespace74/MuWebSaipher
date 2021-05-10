@@ -1,8 +1,12 @@
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Character = use("App/Models/Character");
 
-const { getAccountInfo } = require("./Account");
-const { getGuildCharacter, getGuildName, countGuildMember } = require("./Guild");
+const { getAccountInfo, getAccountConnectionStatus } = require("./Account");
+const {
+  getGuildCharacter,
+  getGuildName,
+  countGuildMember,
+} = require("./Guild");
 
 class Characters {
   async getCharactersAccount(user) {
@@ -31,9 +35,12 @@ class Characters {
       .fetch();
 
     const characterJson = data.toJSON();
+    characterJson[0].status = await getAccountConnectionStatus(
+      characterJson[0].AccountID
+    );
 
     if (characterJson) {
-      characterJson[0].guild = await getGuildCharacter(character);
+      characterJson.guild = await getGuildCharacter(character);
       if (characterJson[0].guild) {
         const Guild_ = await getGuildName(characterJson[0].guild.G_Name);
         characterJson[0].guild.G_Master = Guild_.G_Master;

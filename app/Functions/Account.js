@@ -13,9 +13,15 @@ class Account {
     return data;
   }
 
-  async getAccountInfo(user) {
+  async getAccountInfo(account) {
     const data = await MEMB_INFO.query()
-      .select("memb_guid", "memb___id", "memb_name", "AccountLevel")
+      .select(
+        "memb_guid",
+        "memb___id",
+        "memb_name",
+        "AccountLevel",
+        "AccountExpireDate"
+      )
       .with("characters", (builder) =>
         builder.select(
           "id",
@@ -28,13 +34,39 @@ class Account {
           "MapPosY"
         )
       )
-      .where("memb___id", user)
+      .where("memb___id", account)
       .fetch();
     const AccountJson = data.toJSON();
+
     return AccountJson[0];
   }
 
-  async getAccountConnectionStatus(account) {}
+  async getAccount(account) {
+    const data = await MEMB_INFO.query()
+      .select(
+        "memb_guid",
+        "memb___id",
+        "memb_name",
+        "AccountLevel",
+        "AccountExpireDate"
+      )
+      .where("memb___id", account)
+      .fetch();
+    if (data) {
+      const AccountJson = data.toJSON();
+      return AccountJson[0];
+    }
+    return data;
+  }
+
+  async getAccountConnectionStatus(account) {
+    const status = await MEMB_STAT.findBy("memb___id", account);
+    if (status) {
+      return status.toJSON();
+    }
+
+    return status;
+  }
 }
 
 module.exports = new Account();

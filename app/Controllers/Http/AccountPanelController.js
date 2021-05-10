@@ -5,13 +5,24 @@ const Hash = use("Hash");
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const MEMB_INFO = use("App/Models/MEMB_INFO");
 
-const { getCoinsAccount } = require("../../Functions/Account");
+const {
+  getCoinsAccount,
+  getAccount,
+  getAccountConnectionStatus,
+} = require("../../Functions/Account");
 const { login } = require("../../Functions/Auth");
 class AccountPanelController {
   async index({ view, auth, request }) {
     const coins = await getCoinsAccount(auth.user.memb___id);
+    const status = await getAccountConnectionStatus(auth.user.memb___id);
+    const { AccountLevel, AccountExpireDate } = await getAccount(
+      auth.user.memb___id
+    );
     return view.render(request.TEMPLATE_NAME + ".account.panel.index", {
       coins,
+      status,
+      AccountLevel,
+      AccountExpireDate,
     });
   }
 

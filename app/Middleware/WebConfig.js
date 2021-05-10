@@ -5,13 +5,15 @@
 const View = use("View");
 
 const { web, theme } = require("../../app/Config/web_config.json");
-const { eng } = require("../Lang/eng/main.json")
+const { eng } = require("../Lang/eng/main.json");
 const {
   getPkLevel,
   getCharacterStatusCode,
   getMapName,
   getClassShort,
   getClassLong,
+  getStatusAccount,
+  getVipNameAccount,
 } = require("../Functions/Main");
 
 class WebConfig {
@@ -30,6 +32,15 @@ class WebConfig {
 
       View.global("TEMPLATE_NAME", theme.name);
 
+      View.global("dateFormat", (date) => {
+        const newDate = new Intl.DateTimeFormat("pt-BR").format(date);
+        return newDate;
+      });
+
+      View.global("getVipNameAccount_", (AccountLevel) => getVipNameAccount(AccountLevel));
+
+      View.global("getStatusAccount", (status) => getStatusAccount(status));
+
       View.global("getClassLong", (classCode) => getClassLong(classCode));
 
       View.global("getClassShort", (classCode) => getClassShort(classCode));
@@ -41,16 +52,15 @@ class WebConfig {
       View.global("getCharacterStatusCode", (code) =>
         getCharacterStatusCode(code)
       );
-      View.global('lang', function (key) {
+      View.global("lang", function (key) {
         if (web.lang === "eng") {
-          return eng[key]
+          return eng[key];
         }
         if (web.lang === "pt_br") {
-          return pt_br[key]
+          return pt_br[key];
         }
-        return eng[key]
-      })
-
+        return eng[key];
+      });
     } catch (error) {
       console.log(console.error);
     }

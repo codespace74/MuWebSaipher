@@ -1,7 +1,8 @@
 {
     "web": {
         "title": "Web Saipher 1.0.0",
-        "lang": "eng"
+        "lang": "eng",
+        "serve_type": "x-team"
     },
     "theme": {
         "name": "default"
